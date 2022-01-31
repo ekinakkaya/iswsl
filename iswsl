@@ -1,0 +1,13 @@
+#!/bin/sh
+
+proc1="/proc/sys/kernel/osrelease"
+proc2="/proc/version"
+
+
+if grep -q WSL $proc1 || grep -q Microsoft $proc1 || grep -q WSL $proc2 || grep -q Microsoft $proc2; then
+    echo yes; return 0;  # success
+else
+    echo no;  return -1; # failure
+fi
+
+
